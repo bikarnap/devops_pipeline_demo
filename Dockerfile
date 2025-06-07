@@ -4,5 +4,8 @@ WORKDIR /src
 
 COPY ./golang_app/greetings/greetings.go ./greetings.go
 COPY ./golang_app/greetings/greetings_test.go ./greetings_test.go
+COPY entrypoint.sh ./entrypoint.sh
 
-CMD go mod init greetings && go mod tidy && go test -v
+RUN chmod +x entrypoint.sh
+
+CMD ["./entrypoint.sh"]
